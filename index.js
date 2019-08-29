@@ -21,6 +21,10 @@ app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    return res.status(200).send({ status: 'ok' });
+});
+
 app.get('/clientes', async(req, res) => {
     const clientes = await jsonfile.readFile(fileDir);
     return res.send(clientes);
