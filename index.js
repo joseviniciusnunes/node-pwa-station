@@ -34,7 +34,7 @@ app.delete('/clientes', (req, res) => {
     return res.status(200).send();
 });
 
-const porta = process.env.PORT_DEPLOY || 3001;
+const porta = process.env.PORT || 3001;
 
 app.listen(porta);
 
