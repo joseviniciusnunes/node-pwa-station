@@ -4,12 +4,18 @@ const cors = require('cors');
 const app = express();
 const helmet = require('helmet');
 const path = require('path');
+const fs = require('fs');
 
 const fileDir = path.resolve('data.json');
 
+if (!fs.existsSync(fileDir)) {
+    console.log('CREATE DATA FILE:', fileDir);
+    fs.writeFileSync(fileDir, JSON.stringify({ clientes: [] }));
+}
+
 const jsonfile = require('jsonfile');
 
-console.log('data:', fileDir);
+console.log('DATA:', fileDir);
 
 app.use(helmet());
 app.use(cors());
