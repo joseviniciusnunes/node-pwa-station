@@ -51,7 +51,7 @@ app.post('/clientes', async(req, res) => {
 
 app.delete('/clientes', async(req, res) => {
     try {
-        let { id } = req.body;
+        let { id } = req.query;        
         let response = await jsonfile.readFile(fileDir);
         response.clientes = response.clientes.filter((cliente) => cliente.id !== id);
         jsonfile.writeFile(fileDir, response);
